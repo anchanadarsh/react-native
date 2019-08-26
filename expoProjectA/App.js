@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 export default function App() {
+  const username = 'adarsh';
   return (
     <View style={styles.container}>
-      <Text style={styles.introText}>This is my first React Native Project!!</Text>
+      <Text style={styles.introText}>Username</Text>
+      <TextInput style={styles.inputDefault}></TextInput>
     </View>
   );
 }
@@ -12,13 +14,24 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingLeft:50,
+    paddingRight:50,
+    paddingTop:20,
+    paddingBottom:20,
     backgroundColor: '#000',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
   },
   introText: {
     fontSize:20,
     fontWeight:'bold',
     color: '#00e676',
+  },
+  inputDefault: {
+    height:50,
+    borderBottomColor: '#333',
+    width:'100%',
+    borderColor:'white',
+    borderBottomWidth:2
   }
 });
