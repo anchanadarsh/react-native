@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 export default function App() {
-  const username = 'adarsh';
   return (
     <View style={styles.container}>
       <Text style={styles.introText}>Username</Text>
