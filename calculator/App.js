@@ -6,11 +6,44 @@ export default class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      calcText : '10'
+      calcText : ''
+    }
+  }
+
+  calculatedText(){
+
+  }
+
+  operate(operation){
+    switch(operation){
+      case 'Del': 
+        const text = this.state.calcText.split('')
+        text.pop()
+        this.setState({
+          calcText : text.join('')
+        })
+        break
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        if(this.state.calcText == ''){
+          return
+        }else{
+          this.setState({
+            calcText : this.state.calcText + operation
+          })
+        }
     }
   }
 
   numberPress(text){
+
+    //when user presses '=' button do the operation
+    if(text == '='){
+      return this.calculatedText();
+    }
+
     this.setState({
       calcText : this.state.calcText + text
     })
@@ -38,11 +71,11 @@ export default class App extends React.Component {
     }
 
     //logic for operator keypad buttons
-    let operators = ['Del','/','x','-','+'];
+    let operators = ['Del','/','*','-','+'];
     let operatorRow = [];
     for(let i=0; i<5 ; i++){
       operatorRow.push(
-        <TouchableOpacity style={styles.buttons}>
+        <TouchableOpacity style={styles.buttons} onPress={() => this.operate(operators[i])}>
           <Text style={styles.buttonsText}>{operators[i]}</Text>
         </TouchableOpacity>
       )
